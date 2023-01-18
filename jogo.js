@@ -16,6 +16,7 @@ ajustaTamanhoPalcoJogo();
 Criar uma posição randomica 
 gerar um valor aletório que vá do posição x randon
 até o limite da largura e para o x também
+responsável pela criação do elemento html
 */
 var posicaoRandomica = () => {
   //irá decrementar 90px para não estourar a img
@@ -34,19 +35,21 @@ var posicaoRandomica = () => {
    */
   var mosquito = document.createElement("img");
   mosquito.src = "./imagens/mosquito.png";
-  mosquito.className = tamanhoAleatorio(); //o valor retornado pela chamada da função será atribuido como classe do html apresentado no body
+  mosquito.className = tamanhoAleatorio() + " " + ladoAleatorio(); //o valor retornado pela chamada da função será atribuido como classe do html apresentado no body
   mosquito.style.left = posicaoX + "px";
   mosquito.style.top = posicaoY + "px";
   mosquito.style.position = "absolute";
   //adicionar um filho para o body com o apendchild
   document.body.appendChild(mosquito);
+
+  console.log(ladoAleatorio());
 };
 /* 3º Criar três classes e atribuir as classes de forma aleatória ao elemento html  */
 tamanhoAleatorio = () => {
   //criar um random para obter três casos
   var classe = Math.floor(Math.random() * 3);
   //switch que alteraná as propriedades conforme cada case
- 
+
   //no css criamos as classes de mosquito variaveis
   switch (classe) {
     case 0:
@@ -55,5 +58,16 @@ tamanhoAleatorio = () => {
       return "mosquito2";
     case 2:
       return "mosquito3";
+  }
+};
+/* 4º Posicionamento aleatório */
+ladoAleatorio = () => {
+  var classe = Math.floor(Math.random() * 2);
+
+  switch (classe) {
+    case 0:
+      return "ladoA";
+    case 1:
+      return "ladoB";
   }
 };
