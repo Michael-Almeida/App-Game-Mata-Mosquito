@@ -19,6 +19,12 @@ até o limite da largura e para o x também
 responsável pela criação do elemento html
 */
 var posicaoRandomica = () => {
+  //5º.1 remover o mosquito anterior (caso exista)
+  //if para testar se o elemento existe
+  if (document.getElementById("mosquito")) {
+    document.getElementById("mosquito").remove();
+  }
+
   //irá decrementar 90px para não estourar a img
   var posicaoX = Math.floor(Math.random() * largura) - 90;
   var posicaoY = Math.floor(Math.random() * altura) - 90;
@@ -35,10 +41,18 @@ var posicaoRandomica = () => {
    */
   var mosquito = document.createElement("img");
   mosquito.src = "./imagens/mosquito.png";
-  mosquito.className = tamanhoAleatorio() + " " + ladoAleatorio(); //o valor retornado pela chamada da função será atribuido como classe do html apresentado no body
+  /* 
+  O valor retornado pela chamada da função tamanho aleatorio e lado aleatório será atribuido
+   como classe do html apresentado no body
+
+ */
+
+  mosquito.className = tamanhoAleatorio() + " " + ladoAleatorio();
   mosquito.style.left = posicaoX + "px";
   mosquito.style.top = posicaoY + "px";
   mosquito.style.position = "absolute";
+  //5º Criar um mosquito por vez para renderizar no html
+  mosquito.id = "mosquito";
   //adicionar um filho para o body com o apendchild
   document.body.appendChild(mosquito);
 
@@ -60,7 +74,9 @@ tamanhoAleatorio = () => {
       return "mosquito3";
   }
 };
-/* 4º Posicionamento aleatório */
+/* 4º Posicionamento aleatório
+realizar o transform no estilo.css
+*/
 ladoAleatorio = () => {
   var classe = Math.floor(Math.random() * 2);
 
