@@ -13,15 +13,16 @@
     <!-- Incluir uma div para as vidas e cronômetro e as devidas classes css-->
     <div class="painel">
       <div class="vidas">
-        <img src="./imagens/coracao_vazio.png" />
-        <img src="./imagens/coracao_cheio.png" />
-        <img src="./imagens/coracao_cheio.png" />
+        <!-- criar id para as imagens -->
+        <img id="v1" src="./imagens/coracao_cheio.png" />
+        <img id="v2" src="./imagens/coracao_cheio.png" />
+        <img id="v3" src="./imagens/coracao_cheio.png" />
       </div>
       <div class="cronometro">Tempo restante:</div>
     </div>
     <script>
       /* Executar uma ação determinado tempo */
-      setInterval(() => posicaoRandomica(), 1000);
+      setInterval(() => posicaoRandomica(), 2000);
     </script>
   </body>
 </html>

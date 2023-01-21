@@ -5,6 +5,8 @@ chamar no body do html com o onresize=ajustaTamanhoPalcoJogo()     */
 
 var altura = 0;
 var largura = 0;
+var vidas = 1;
+
 ajustaTamanhoPalcoJogo = () => {
   altura = window.innerHeight; //altura interna da janela
   largura = window.innerWidth; //largura interna da janela
@@ -19,10 +21,20 @@ até o limite da largura e para o x também
 responsável pela criação do elemento html
 */
 var posicaoRandomica = () => {
-  //5º.1 remover o mosquito anterior (caso exista)
+  //5º
+  //1 remover o mosquito anterior (caso exista)
   //if para testar se o elemento existe
   if (document.getElementById("mosquito")) {
     document.getElementById("mosquito").remove();
+    //selecionar os coraçõoes e atribuir o valor ao src vazio
+    //console.log('elemento selecionado foi:' + vidas)
+
+    if (vidas > 3) {
+      alert("Game Over");
+    } else {
+      document.getElementById("v" + vidas).src = "./imagens/coracao_vazio.png";
+    }
+    vidas++;
   }
 
   //irá decrementar 90px para não estourar a img
@@ -35,7 +47,7 @@ var posicaoRandomica = () => {
   posicaoY = posicaoY < 0 ? 0 : posicaoY;
 
   /*  
-  Criar o elemento html
+  Criar o elemento Mosquito no html
   acessar as referência para editar: 
   src, className, style, position
    */
@@ -51,6 +63,11 @@ var posicaoRandomica = () => {
   mosquito.style.left = posicaoX + "px";
   mosquito.style.top = posicaoY + "px";
   mosquito.style.position = "absolute";
+  //7º criar o elemento de click para o objeto
+  mosquito.onclick = function () {
+    this.remove();
+  };
+
   //5º Criar um mosquito por vez para renderizar no html
   mosquito.id = "mosquito";
   //adicionar um filho para o body com o apendchild
