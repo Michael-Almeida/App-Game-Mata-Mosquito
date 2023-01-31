@@ -15,14 +15,20 @@
       function iniciarJogo() {
         var nivel = document.getElementById("nivel").value;
 
-        if (nivel === '') {
+        if (nivel === "") {
           alert("Selecione um nível para inicar o jogo");
           return false;
         }
-        alert(nivel);
+
+        /**
+         * ! encaminhando a informação para outra página
+         * TODO ? => separa a página dos parâmetros encaminhados
+
+         */ window.location.href = "app.html?" + nivel;
       }
       /* var nivel = (iniciarJogo = () =>
         alert(document.getElementById("nivel").value));
+        * 
  */
     </script>
   </head>
