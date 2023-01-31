@@ -30,7 +30,8 @@ var posicaoRandomica = () => {
     //console.log('elemento selecionado foi:' + vidas)
 
     if (vidas > 3) {
-      alert("Game Over");
+      //fazer o redirecionamento através do BOM
+      window.location.href ='fim_jogo.html'
     } else {
       document.getElementById("v" + vidas).src = "./imagens/coracao_vazio.png";
     }
