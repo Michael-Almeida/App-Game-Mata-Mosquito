@@ -6,6 +6,7 @@ chamar no body do html com o onresize=ajustaTamanhoPalcoJogo()     */
 var altura = 0;
 var largura = 0;
 var vidas = 1;
+var tempo = 10;
 
 ajustaTamanhoPalcoJogo = () => {
   altura = window.innerHeight; //altura interna da janela
@@ -13,6 +14,19 @@ ajustaTamanhoPalcoJogo = () => {
   console.log("Largura " + largura, "Altura " + altura);
 };
 ajustaTamanhoPalcoJogo();
+
+//criando o cronômetro do jogo
+var cronometro = setInterval(() => {
+  tempo = tempo - 1;
+
+  if (tempo < 0) {
+    clearInterval(cronometro)
+    clearInterval(criaMosquito)
+    alert('vitoria')
+  } else {
+    document.getElementById("cronometro").innerHTML = tempo;
+  }
+}, 1000);
 
 /* 2º
 Criar uma posição randomica 
@@ -31,7 +45,7 @@ var posicaoRandomica = () => {
 
     if (vidas > 3) {
       //fazer o redirecionamento através do BOM
-      window.location.href ='fim_jogo.html'
+      window.location.href = "fim_jogo.html";
     } else {
       document.getElementById("v" + vidas).src = "./imagens/coracao_vazio.png";
     }
